@@ -2,6 +2,7 @@ from pathlib import Path
 from typing import Callable
 from converter import doc2text
 from sentence_bert import make_embeddings as make_embeddings_SentenceBERT
+from mistral import make_embeddings as make_embeddings_Mistral
 from utils import split_markdown_by_headers
 import numpy as np
 import pickle
@@ -95,3 +96,7 @@ doc2text(path)
 if not Path("SentenceBERT.embeddings").exists():
     embedding_docs = make_embeddings(path, make_embeddings_SentenceBERT)
     save_embeddings(embedding_docs, "SentenceBERT.embeddings")
+
+if not Path("Mistral.embeddings").exists():
+    embedding_docs = make_embeddings(path, make_embeddings_Mistral)
+    save_embeddings(embedding_docs, "Mistral.embeddings")
