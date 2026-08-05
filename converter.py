@@ -41,10 +41,10 @@ def doc2text(dossier: Path):
             continue
 
         if element.with_suffix(".md").exists():
-            print(f"Fichier : {element.name} (déjà traité)")
+            print(f"Fichier : {element.name} (déjà traité)", flush=True)
             continue
 
-        print(f"Fichier : {element.name}")
+        print(f"Fichier : {element.name}", flush=True)
         try:
             print(str(element.resolve()))
             result = converter.convert(str(element.resolve()))

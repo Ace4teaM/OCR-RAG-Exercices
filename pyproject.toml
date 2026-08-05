@@ -6,5 +6,7 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "docling>=2.118.0",
+    "numpy>=2.4.6",
     "openai-whisper>=20250625",
+    "sentence-transformers>=5.6.1",
 ]
