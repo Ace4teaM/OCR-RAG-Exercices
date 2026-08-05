@@ -1,0 +1,10 @@
+[project]
+name = "dev1"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "docling>=2.118.0",
+    "openai-whisper>=20250625",
+]
