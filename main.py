@@ -1,10 +1,9 @@
 from pathlib import Path
 from typing import Callable
 from converter import doc2text
+from sentence_bert import make_embeddings as make_embeddings_SentenceBERT
 from utils import split_markdown_by_headers
-from sentence_transformers import SentenceTransformer
 import numpy as np
-from functools import lru_cache
 import pickle
 
 def cosine_similarity(vec1: np.ndarray, vec2: np.ndarray) -> float:
@@ -23,28 +22,6 @@ def cosine_similarity(vec1: np.ndarray, vec2: np.ndarray) -> float:
 
 def make_embeddings_Mistral(text: str) -> np.ndarray:
     pass
-
-#
-# vectorise les documents convertis (Sentence-BERT)
-#
-
-
-@lru_cache(maxsize=1)
-def get_model_SentenceBERT():
-    print("Chargement du modèle...", flush=True)
-    return SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
-
-
-def make_embeddings_SentenceBERT(text: str) -> np.ndarray:
-    """
-    Vectorise le texte en utilisant le modèle Sentence-BERT.
-
-    Retourne l'embedding de type <numpy.ndarray>
-    """
-    model = get_model_SentenceBERT() # en cache pour éviter de recharger le modèle à chaque appel
-
-    # Générer les embeddings
-    return model.encode(text, convert_to_numpy=True)
 
 def make_embeddings(dossier: Path, embedding_function: Callable[[str], np.ndarray]):
     """
