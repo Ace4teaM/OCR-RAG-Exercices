@@ -58,3 +58,4 @@ def doc2text(dossier: Path):
         except Exception as e:
             print(f"Erreur lors de la conversion de {element}: {e}")
             continue
+
